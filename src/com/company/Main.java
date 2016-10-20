@@ -14,6 +14,8 @@ public class Main {
         createTable(conn);
         Spark.externalStaticFileLocation("public");
         Spark.init();
+
+
     }
 
     public static void createTable(Connection conn) throws SQLException {
@@ -22,7 +24,7 @@ public class Main {
                 "VARCHAR,location VARCHAR,location_image VARCHAR)");
     }
 
-    public static void insertTable(Connection conn,Movie movie) throws SQLException {
+    public static void insertMovie(Connection conn,Movie movie) throws SQLException {
         PreparedStatement stmt = conn.prepareStatement("INSERT INTO movies VALUES (null,?,?,?,?,?)");
         stmt.setString(1,movie.title);
         stmt.setString(2,movie.director);
@@ -67,5 +69,4 @@ public class Main {
         stmt.setInt(1,id);
         stmt.execute();
     }
-
 }
