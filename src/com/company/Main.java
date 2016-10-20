@@ -52,7 +52,7 @@ public class Main {
                 "/movie/:id",
                 (request,response) -> {
                     JsonParser parser = new JsonParser();
-                    Integer id = parser.parse(request.params(":id"));
+                    int id = parser.parse(request.params(":id"));
                     deleteMovie(conn,id);
                     return "";
                 }
