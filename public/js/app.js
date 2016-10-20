@@ -26,6 +26,12 @@ var controllerRouter = function(){
          showViewSightingPage()
          break;
       }
+      switch(currentHashPrefix){
+         case "add":
+            submitPage()
+            break;
+         }
+
    }
 
 controllerRouter()
