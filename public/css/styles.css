@@ -386,5 +386,24 @@ img {
     background: none;
     border-radius: 10%;
     border: 3px solid #FFF; }
+#app-container .container {
+  background: url("https://i.ytimg.com/vi/Xyt-2Iznz3I/maxresdefault.jpg") center no-repeat;
+  padding-bottom: 60px;
+  padding-top: 20px; }
+  #app-container .container h1 {
+    color: #4ECDC4;
+    color: #556270; }
+#app-container .page-header {
+  color: white;
+  font-family: fantasy;
+  font-size: 35px;
+  background: url("https://slack-imgs.com/?c=1&url=https%3A%2F%2Fstatic.pexels.com%2Fphotos%2F27008%2Fpexels-photo-27008-landscape.jpg") center no-repeat; }
+#app-container .btn-group > .btn {
+  height: 10%;
+  width: 175%;
+  background: #4B79A1;
+  background: -webkit-linear-gradient(to left, #4B79A1, #283E51);
+  background: linear-gradient(to left, #4B79A1, #283E51);
+  border-color: #eea236; }
 
 /*# sourceMappingURL=styles.css.map */

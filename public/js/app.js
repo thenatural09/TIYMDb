@@ -1,11 +1,11 @@
-// //app.js
-// console.log('wired up!')
-// //j-query
-// console.log($)
-// //underscore
-// console.log(_)
-// //backbone
-// console.log(Backbone)
+//app.js
+console.log('wired up!')
+//j-query
+console.log($)
+//underscore
+console.log(_)
+//backbone
+console.log(Backbone)
 
 
 var controllerRouter = function(){
@@ -23,11 +23,17 @@ var controllerRouter = function(){
 
    switch(currentHashPrefix){
       case "view":
-         showViewSightingPage()
+         $.getJSON('https://quik-spitter-api.herokuapp.com/api/sitings').then(function(serverRes){
+          showViewSightingPage(serverRes)
+        })
+
          break;
       }
       switch(currentHashPrefix){
          case "add":
+         $.post(' https://quik-spitter-api.herokuapp.com/api/add-siting').then(function(userInput){
+
+         })
             submitPage()
             break;
          }
@@ -36,6 +42,7 @@ var controllerRouter = function(){
 
 controllerRouter()
 window.addEventListener('hashchange' , controllerRouter)
+
 
 
 //showViewSightingPage()
