@@ -9,15 +9,15 @@ public class Movie {
     String director;
     String description;
     String location;
-    String locationImage;
+    String locationImg;
 
-    public Movie(int id, String title, String director, String description, String location, String locationImage) {
+    public Movie(int id, String title, String director, String description, String location, String locationImg) {
         this.id = id;
         this.title = title;
         this.director = director;
         this.description = description;
         this.location = location;
-        this.locationImage = locationImage;
+        this.locationImg = locationImg;
     }
 
     public Movie() {
@@ -43,7 +43,7 @@ public class Movie {
         return location;
     }
 
-    public String getLocationImage() {
-        return locationImage;
+    public String getLocationImg() {
+        return locationImg;
     }
 }

@@ -62,8 +62,9 @@ public class Main {
     public static void createTable(Connection conn) throws SQLException {
         Statement stmt = conn.createStatement();
         stmt.execute("CREATE TABLE IF NOT EXISTS movies (id IDENTITY,title VARCHAR,director VARCHAR,description " +
-                "VARCHAR,location VARCHAR,location_image VARCHAR)");
+                "VARCHAR,location VARCHAR,location_image VARCHAR,user_id INT)");
     }
+
 
     public static void insertMovie(Connection conn,Movie movie) throws SQLException {
         PreparedStatement stmt = conn.prepareStatement("INSERT INTO movies VALUES (null,?,?,?,?,?)");
@@ -71,7 +72,7 @@ public class Main {
         stmt.setString(2,movie.director);
         stmt.setString(3,movie.description);
         stmt.setString(4,movie.location);
-        stmt.setString(5,movie.locationImage);
+        stmt.setString(5,movie.locationImg);
         stmt.execute();
     }
 
@@ -99,10 +100,10 @@ public class Main {
         stmt.setString(2,movie.director);
         stmt.setString(3,movie.description);
         stmt.setString(4,movie.location);
-        stmt.setString(5,movie.locationImage);
+        stmt.setString(5,movie.locationImg);
         stmt.setInt(6,movie.id);
         stmt.execute();
-        return new Movie(movie.id,movie.title,movie.director,movie.description,movie.location,movie.locationImage);
+        return new Movie(movie.id,movie.title,movie.director,movie.description,movie.location,movie.locationImg);
     }
 
     public static void deleteMovie (Connection conn,int id) throws SQLException {
