@@ -1,5 +1,7 @@
 package com.company;
 
+import jodd.json.JsonParser;
+import jodd.json.JsonSerializer;
 import org.h2.tools.Server;
 import spark.Spark;
 
@@ -15,7 +17,46 @@ public class Main {
         Spark.externalStaticFileLocation("public");
         Spark.init();
 
+        Spark.get(
+                "/movie",
+                (request,response) -> {
+                    ArrayList<Movie> users = selectMovies(conn);
+                    JsonSerializer serializer = new JsonSerializer();
+                    return serializer.deep(true).serialize(users);
+                }
+        );
 
+        Spark.post(
+                "/movie",
+                (request,response) -> {
+                    String body = request.body();
+                    JsonParser parser = new JsonParser();
+                    Movie movie = parser.parse(body,Movie.class);
+                    insertMovie(conn,movie);
+                    return "";
+                }
+        );
+
+        Spark.put(
+                "/movie",
+                (request, response) -> {
+                    String body = request.body();
+                    JsonParser parser = new JsonParser();
+                    Movie movie = parser.parse(body,Movie.class);
+                    editMovie(conn,movie);
+                    return "";
+                }
+        );
+
+        Spark.delete(
+                "/movie/:id",
+                (request,response) -> {
+                    JsonParser parser = new JsonParser();
+                    Integer id = parser.parse(request.params(":id"));
+                    deleteMovie(conn,id);
+                    return "";
+                }
+        );
     }
 
     public static void createTable(Connection conn) throws SQLException {
