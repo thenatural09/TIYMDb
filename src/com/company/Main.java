@@ -62,7 +62,7 @@ public class Main {
     public static void createTable(Connection conn) throws SQLException {
         Statement stmt = conn.createStatement();
         stmt.execute("CREATE TABLE IF NOT EXISTS movies (id IDENTITY,title VARCHAR,director VARCHAR,description " +
-                "VARCHAR,location VARCHAR,location_image VARCHAR,user_id INT)");
+                "VARCHAR,location VARCHAR,location_image VARCHAR)");
     }
 
 
