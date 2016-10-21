@@ -30,15 +30,44 @@ var controllerRouter = function(){
          break;
       }
       switch(currentHashPrefix){
+
          case "add":
-         $.post(' https://quik-spitter-api.herokuapp.com/api/add-siting').then(function(userInput){
+         submitPage()
+         document.querySelector('#new-sighting-form')
+            .addEventListener('submit', function(evt){
+               evt.preventDefault()
+               var formEl = evt.target
+
+               console.log(formEl.title.value)
+               console.log(formEl.director.value)
+
+               var objForDatabase = {
+                  title: formEl.title.value,
+                  director:  formEl.director.value,
+                  description: formEL.description.value,
+                  location: formEl.location.value,
+                  loactionImg: formEl.locationImg.value
+               }
+
+               $.post(JSON.stringify('https://quik-spitter-api.herokuapp.com/api/add-siting')).then(function(serverRes){
+                  window.location.hash = "view"
+            })
 
          })
-            submitPage()
-            break;
-         }
 
+      }
    }
+
+
+         // break;
+         // case "add":
+         // $.post(' https://quik-spitter-api.herokuapp.com/api/add-siting').then(function(userInput){
+         //
+         // })
+         //    submitPage()
+         //    break;
+         // }
+
 
 controllerRouter()
 window.addEventListener('hashchange' , controllerRouter)
