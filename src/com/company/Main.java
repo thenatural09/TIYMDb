@@ -18,6 +18,7 @@ public class Main {
         Spark.init();
 
 
+
         if (count(conn,"movies") == 0) {
             Movie movie = new Movie(1,"22 Jump Street","Phil Lord","Two cops go to college.","New Orleans","http://www4.pictures.zimbio.com/pc/Channing+Tatum+Jonah+Hill+team+up+film+scene+vV7creh7xKkl.jpg");
             insertMovie(conn,movie);
