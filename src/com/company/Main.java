@@ -17,6 +17,11 @@ public class Main {
         Spark.externalStaticFileLocation("public");
         Spark.init();
 
+        if (count(conn,"movies") == 0) {
+            Movie movie = new Movie(1,"22 Jump Street","Phil Lord","Two cops go to college.","New Orleans","http://www4.pictures.zimbio.com/pc/Channing+Tatum+Jonah+Hill+team+up+film+scene+vV7creh7xKkl.jpg");
+            insertMovie(conn,movie);
+        }
+
         Spark.get(
                 "/movie",
                 (request,response) -> {
@@ -110,5 +115,14 @@ public class Main {
         PreparedStatement stmt = conn.prepareStatement("DELETE FROM movies WHERE id = ?");
         stmt.setInt(1,id);
         stmt.execute();
+    }
+
+    public static int count (Connection conn, String table) throws SQLException {
+        Statement stmt = conn.createStatement();
+        ResultSet results = stmt.executeQuery("SELECT COUNT(*) FROM " + table);
+        if (results.next()) {
+            return results.getInt(1);
+        }
+        return 0;
     }
 }
