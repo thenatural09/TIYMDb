@@ -1,11 +1,11 @@
-//app.js
-console.log('wired up!')
-//j-query
-console.log($)
-//underscore
-console.log(_)
-//backbone
-console.log(Backbone)
+// //app.js
+// console.log('wired up!')
+// //j-query
+// console.log($)
+// //underscore
+// console.log(_)
+// //backbone
+// console.log(Backbone)
 
 
 var controllerRouter = function(){
@@ -33,25 +33,40 @@ var controllerRouter = function(){
 
          case "add":
          submitPage()
+
          document.querySelector('#new-sighting-form')
             .addEventListener('submit', function(evt){
                evt.preventDefault()
-               var formEl = evt.target
+                // var formEl = evt.target
 
-               console.log(formEl.title.value)
-               console.log(formEl.director.value)
+                // evt.target.forEach(function(inputBox){
+                //
+                //   console.log(inputBox.value)
+                //
+                //
+                //
+                //
+                // })
+               console.log([evt.target])
 
-               var objForDatabase = {
-                  title: formEl.title.value,
-                  director:  formEl.director.value,
-                  description: formEL.description.value,
-                  location: formEl.location.value,
-                  loactionImg: formEl.locationImg.value
-               }
+               console.log()
 
-               $.post(JSON.stringify('https://quik-spitter-api.herokuapp.com/api/add-siting')).then(function(serverRes){
-                  window.location.hash = "view"
-            })
+              //  console.log(formEl.title.value)
+              //  console.log(formEl.director.value)
+              //  console.log(formEl.description.value);
+               //
+              //  var objForDatabase = {
+              //     title: formEl.title.value,
+              //     director:  formEl.director.value,
+              //     description: formEL.description.value,
+              //     location: formEl.location.value,
+              //     loactionImg: formEl.locationImg.value
+              //  }
+            //
+            // console.log(objForDatabase)
+            //    $.post(JSON.stringify('https://quik-spitter-api.herokuapp.com/api/add-siting')).then(function(serverRes){
+            //       window.location.hash = "view"
+            // })
 
          })
 
