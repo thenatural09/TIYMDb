@@ -36,53 +36,28 @@ var controllerRouter = function(){
 
          document.querySelector('#new-sighting-form')
             .addEventListener('submit', function(evt){
-               evt.preventDefault()
-                // var formEl = evt.target
+              evt.preventDefault()
+                var formEl = evt.target
 
-                // evt.target.forEach(function(inputBox){
-                //
-                //   console.log(inputBox.value)
-                //
-                //
-                //
-                //
-                // })
-               console.log([evt.target])
 
-               console.log()
+               var objForDatabase = {
+                  title: formEl.title.value,
+                  director:  formEl.director.value,
+                  description: formEl.description.value,
+                  location: formEl.location.value,
+                  loactionImg: formEl.locationImg.value
+               }
+               console.log(objForDatabase);
+               $.post('https://quik-spitter-api.herokuapp.com/api/add-siting', JSON.stringify(objForDatabase)).then(function(serverRes){
+                  window.location.hash = "view"
 
-              //  console.log(formEl.title.value)
-              //  console.log(formEl.director.value)
-              //  console.log(formEl.description.value);
-               //
-              //  var objForDatabase = {
-              //     title: formEl.title.value,
-              //     director:  formEl.director.value,
-              //     description: formEL.description.value,
-              //     location: formEl.location.value,
-              //     loactionImg: formEl.locationImg.value
-              //  }
-            //
-            // console.log(objForDatabase)
-            //    $.post(JSON.stringify('https://quik-spitter-api.herokuapp.com/api/add-siting')).then(function(serverRes){
-            //       window.location.hash = "view"
-            // })
+              })
 
-         })
+            })
+
+         }
 
       }
-   }
-
-
-         // break;
-         // case "add":
-         // $.post(' https://quik-spitter-api.herokuapp.com/api/add-siting').then(function(userInput){
-         //
-         // })
-         //    submitPage()
-         //    break;
-         // }
-
 
 controllerRouter()
 window.addEventListener('hashchange' , controllerRouter)
