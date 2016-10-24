@@ -48,8 +48,12 @@ var controllerRouter = function(){
                   locationImg: formEl.locationImg.value
                }
                console.log(objForDatabase);
-
-               $.post('https://quik-spitter-api.herokuapp.com/api/add-sitings', JSON.stringify(objForDatabase)).then(function(updateSighting){
+               var postReqSettings =  {
+                  url: 'https://quik-spitter-api.herokuapp.com/api/add-siting',
+                  data: JSON.stringify(objForDatabase),
+                  headers: { 'Content-Type': 'application/json' }
+                }
+               $.post(postReqSettings).then(function(updateSighting){
                   window.location.hash = "view"
 
               })
