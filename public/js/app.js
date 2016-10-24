@@ -41,13 +41,14 @@ var controllerRouter = function(){
 
 
                var objForDatabase = {
-                  'title': formEl.title.value,
-                  'director':  formEl.director.value,
-                  'description': formEl.description.value,
-                  'location': formEl.location.value,
-                  'locationImg': formEl.locationImg.value
+                  title: formEl.title.value,
+                  director:  formEl.director.value,
+                  description: formEl.description.value,
+                  location: formEl.location.value,
+                  locationImg: formEl.locationImg.value
                }
                console.log(objForDatabase);
+
                $.post('https://quik-spitter-api.herokuapp.com/api/add-sitings', JSON.stringify(objForDatabase)).then(function(updateSighting){
                   window.location.hash = "view"
 
